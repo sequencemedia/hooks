@@ -1,0 +1,51 @@
+{
+  "name": "@sequencemedia/hooks",
+  "description": "Git Hooks",
+  "keywords": [
+    "git",
+    "hooks"
+  ],
+  "main": "./index.mjs",
+  "author": "Jonathan Perry for Sequence Media Limited <sequencemedia@sequencemedia.net>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.13.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sequencemedia/hooks"
+  },
+  "homepage": "https://github.com/sequencemedia/hooks",
+  "bugs": {
+    "url": "https://github.com/sequencemedia/hooks/issues"
+  },
+  "scripts": {
+    "lint": "eslint . --ext .mjs --ext .cjs",
+    "lint:fix": "npm run lint -- --fix",
+    "gulp": "gulp --color",
+    "pre-commit": "npm run lint",
+    "post-commit": "cross-env DEBUG=@sequencemedia/hooks,@sequencemedia/hooks:* npm run gulp -- post-commit",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "debug": "^4.3.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.5",
+    "@babel/eslint-parser": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "core-js": "^3.20.1",
+    "eslint": "7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "5.2.0",
+    "gulp": "^4.0.2",
+    "husky": "^7.0.4"
+  },
+  "imports": {
+    "#hooks/*": "./src/*.mjs"
+  }
+}

@@ -1,0 +1,15 @@
+# Node modules
+/node_modules
+
+# Mac
+.DS_Store
+
+# User-defined NPM configuration
+.npmrc
+.npmignore
+
+# User-defined NVM configuration
+.nvmrc
+
+# Development
+.depsrc
