@@ -7,6 +7,7 @@
     "hooks"
   ],
   "main": "./index.mjs",
+  "type": "module",
   "author": "Jonathan Perry for Sequence Media Limited <sequencemedia@sequencemedia.net>",
   "license": "MIT",
   "engines": {
