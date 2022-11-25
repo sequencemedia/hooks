@@ -30,12 +30,12 @@
     "debug": "^4.3.4"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.20.2",
     "@babel/eslint-parser": "^7.19.1",
     "@babel/preset-env": "^7.20.2",
     "core-js": "^3.26.1",
+    "cross-env": "^7.0.3",
     "eslint": "^8.28.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
