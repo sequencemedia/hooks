@@ -13,7 +13,7 @@ const error = debug('@sequencemedia/hooks:post-commit:error')
 log('`@sequencemedia/hooks` is awake')
 
 export default async function postCommit () {
-  log('post-commit')
+  log('postCommit')
 
   try {
     if (await hasStagedChanges()) return
