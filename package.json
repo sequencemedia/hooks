@@ -24,16 +24,13 @@
   "scripts": {
     "lint": "eslint . --ext .mjs --ext .cjs",
     "lint:fix": "npm run lint -- --fix",
-    "gulp": "gulp --color",
-    "pre-commit": "npm run lint",
-    "post-commit": "cross-env DEBUG=@sequencemedia/hooks,@sequencemedia/hooks:* npm run gulp -- post-commit",
     "prepare": "husky install"
   },
   "dependencies": {
-    "cross-env": "^7.0.3",
     "debug": "^4.3.4"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.20.2",
     "@babel/eslint-parser": "^7.19.1",
@@ -44,7 +41,6 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.1.1",
-    "gulp": "^4.0.2",
     "husky": "^8.0.2"
   },
   "imports": {
