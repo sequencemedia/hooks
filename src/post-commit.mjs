@@ -21,7 +21,10 @@ export default async function postCommit () {
     if (await hasGitDiffHeadPackageVersionChanges(await getGitRemoteShowOriginHeadBranch())) return
 
     await patchPackageVersion()
-  } catch ({ code = 'NONE', message = 'No error message defined' }) {
+  } catch ({
+    code = 'NONE',
+    message = 'No error message defined'
+  }) {
     error({ code, message })
   }
 }
