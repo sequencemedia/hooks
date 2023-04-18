@@ -8,6 +8,7 @@
   ],
   "main": "./index.mjs",
   "type": "module",
+  "types": "./hooks.d.ts",
   "author": "Jonathan Perry for Sequence Media Limited <sequencemedia@sequencemedia.net>",
   "license": "MIT",
   "engines": {
