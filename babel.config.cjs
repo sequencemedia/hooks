@@ -11,11 +11,6 @@ const presets = [
   ]
 ]
 
-const plugins = []
-
 module.exports = {
-  compact: true,
-  comments: false,
-  presets,
-  plugins
+  presets
 }
