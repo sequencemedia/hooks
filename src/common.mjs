@@ -103,7 +103,7 @@ export function patchPackageVersion () {
 
   return (
     new Promise((resolve, reject) => {
-      exec('npm version patch -m %s -n', OPTIONS, (e) => (!e) ? resolve() : reject(e))
+      exec('npm version patch -m "%s" -n --no-commit-hooks', OPTIONS, (e) => (!e) ? resolve() : reject(e))
     })
   )
 }
