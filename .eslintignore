@@ -1,7 +1,0 @@
-.DS_Store
-
-.circleci
-.github
-.husky
-
-node_modules
