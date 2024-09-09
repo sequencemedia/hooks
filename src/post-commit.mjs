@@ -22,9 +22,8 @@ export default async function postCommit () {
 
     await patchPackageVersion()
   } catch ({
-    code = 'NONE',
     message = 'No error message defined'
   }) {
-    error({ code, message })
+    error(message)
   }
 }
