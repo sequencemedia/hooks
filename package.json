@@ -1,6 +1,6 @@
 {
   "name": "@sequencemedia/hooks",
-  "version": "1.0.623",
+  "version": "1.1.0",
   "description": "Git Hooks",
   "keywords": [
     "git",
