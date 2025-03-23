@@ -22,9 +22,17 @@ export const NOT_STAGED_CHANGES = /Changes not staged for commit/s
 
 export const trim = (v = '') => String(v).split('\n').map((v) => v.trimEnd()).join('\n').trim()
 
+/**
+ *  @param {string} key
+ *  @returns {(v: string) => void}
+ */
 export function use (key) {
-  const log = debug(`@sequencemedia/hooks:${key}`)
+  const log = debug(`@sequencemedia/hooks:common:${key}`)
 
+  /**
+   *  @param {string} v
+   *  @returns {void}
+   */
   return function use (v) {
     log(trim(v))
   }
@@ -42,8 +50,26 @@ export function getGitRemoteShowOriginHeadBranch () {
         stderr
       } = exec(command, OPTIONS, (e, v) => (!e) ? resolve(trim(v)) : reject(e))
 
-      stdout.on('data', use('git-remote-show-origin-head-branch'))
-      stderr.on('data', use('git-remote-show-origin-head-branch'))
+      if (stdout) stdout.on('data', use('git-remote-show-origin-head-branch'))
+      if (stderr) stderr.on('data', use('git-remote-show-origin-head-branch'))
+    })
+  )
+}
+
+export function getGitRevParseAbbrevRefHead () {
+  log('getGitRevParseAbbrevRefHead')
+
+  return (
+    new Promise((resolve, reject) => {
+      const command = 'git rev-parse --abbrev-ref HEAD'
+
+      const {
+        stdout,
+        stderr
+      } = exec(command, OPTIONS, (e, v) => (!e) ? resolve(trim(v)) : reject(e))
+
+      if (stdout) stdout.on('data', use('git-rev-parse-head'))
+      if (stderr) stderr.on('data', use('git-rev-parse-head'))
     })
   )
 }
@@ -93,7 +119,7 @@ export function addPackageVersionChanges () {
 
   return (
     new Promise((resolve, reject) => {
-      exec('git add package.json package-lock.json', OPTIONS, (e) => (!e) ? resolve() : reject(e))
+      exec('git add package.json package-lock.json', OPTIONS, (e, v) => (!e) ? resolve(v) : reject(e))
     })
   )
 }
@@ -103,7 +129,7 @@ export function patchPackageVersion () {
 
   return (
     new Promise((resolve, reject) => {
-      exec('npm version patch -m "%s" -n --no-commit-hooks', OPTIONS, (e) => (!e) ? resolve() : reject(e))
+      exec('npm version patch -m "%s" -n --no-commit-hooks', OPTIONS, (e, v) => (!e) ? resolve(v) : reject(e))
     })
   )
 }

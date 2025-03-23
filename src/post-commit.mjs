@@ -3,6 +3,7 @@ import debug from 'debug'
 import {
   hasStagedChanges,
   getGitRemoteShowOriginHeadBranch,
+  getGitRevParseAbbrevRefHead,
   hasGitDiffHeadPackageVersionChanges,
   patchPackageVersion
 } from '#hooks/common'
@@ -12,18 +13,26 @@ const error = debug('@sequencemedia/hooks:post-commit:error')
 
 log('`@sequencemedia/hooks` is awake')
 
+function handleError ({
+  code = 'NONE',
+  message = 'NONE'
+}) {
+  error({ code, message })
+}
+
 export default async function postCommit () {
   log('postCommit')
 
   try {
     if (await hasStagedChanges()) return
 
-    if (await hasGitDiffHeadPackageVersionChanges(await getGitRemoteShowOriginHeadBranch())) return
+    const originHeadBranch = await getGitRemoteShowOriginHeadBranch()
+    if (originHeadBranch === await getGitRevParseAbbrevRefHead()) {
+      if (await hasGitDiffHeadPackageVersionChanges(originHeadBranch)) return
 
-    await patchPackageVersion()
-  } catch ({
-    message = 'No error message defined'
-  }) {
-    error(message)
+      await patchPackageVersion()
+    }
+  } catch (e) { // @ts-expect-error
+    handleError(e)
   }
 }
