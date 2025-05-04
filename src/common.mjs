@@ -2,7 +2,7 @@ import debug from 'debug'
 
 import {
   exec
-} from 'child_process'
+} from 'node:child_process'
 
 const log = debug('@sequencemedia/hooks:common')
 
