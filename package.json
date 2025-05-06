@@ -20,9 +20,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/sequencemedia/hooks"
+    "url": "git+https://github.com/sequencemedia/hooks"
   },
-  "homepage": "https://github.com/sequencemedia/hooks",
+  "homepage": "https://github.com/sequencemedia/hooks#readme",
   "bugs": {
     "url": "https://github.com/sequencemedia/hooks/issues"
   },
