@@ -32,7 +32,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "debug": "^4.4.0"
+    "debug": "^4.4.1"
   },
   "devDependencies": {
     "@sequencemedia/eslint-config-standard": "^0.2.57",
